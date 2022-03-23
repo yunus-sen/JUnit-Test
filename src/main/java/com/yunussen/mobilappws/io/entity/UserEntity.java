@@ -17,15 +17,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.*;
 import org.hibernate.annotations.ManyToAny;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@EqualsAndHashCode(of = {"id","email"})
 @Entity
 @Table(name = "users")
 public class UserEntity implements Serializable {

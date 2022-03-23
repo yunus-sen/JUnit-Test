@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@EqualsAndHashCode(of = {"id","email"})
 public class UserDto implements Serializable {
 
 	
