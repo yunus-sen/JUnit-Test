@@ -15,17 +15,35 @@ import static org.junit.jupiter.api.Assertions.*;
 class UtilsTest {
 
     @InjectMocks
-    private Utils util;
+    private Utils utils;
 
     @Test
     public void whenGenerateUserIdCalled_itShouldReturnString() {
-        String userId = util.generateUserId(30);
-        String userId2 = util.generateUserId(30);
+        String userId = utils.generateUserId(30);
+        String userId2 = utils.generateUserId(30);
 
         assertNotNull(userId);
         assertNotNull(userId2);
         assertFalse(userId.equalsIgnoreCase(userId2));
         assertEquals(userId.length(), 30);
+    }
+
+    @Test
+    public void whenHasTokenExpiredCalledWithNotExpiredToken_itShouldReturnFalse() {
+        String token = utils.generateEmailVerificationToken("asdf123");
+        assertNotNull(token);
+
+        boolean hasTokenNotExpired = Utils.hasTokenExpired(token);
+        assertFalse(hasTokenNotExpired);
+    }
+
+    @Test
+    public void testHasTokenExpired() {
+        String expiredToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc2RmMTIzIiwiZXhwIjoxNjQ4NDU3MTA2fQ.5feADtmP3actU7j_ozlv75-0bbBVcaMx97Fipe7VJgi-QEv5gAmqJ_bFH2w_ZDIfqn1RwvPTJDQjh1YTY_oJVg";
+        boolean hasTokenExpired = Utils.hasTokenExpired(expiredToken);
+
+        assertTrue(hasTokenExpired);
+
     }
 
 }
