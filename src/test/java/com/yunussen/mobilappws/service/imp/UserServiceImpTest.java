@@ -47,9 +47,8 @@ public class UserServiceImpTest {
                 () -> userService.getUser(anyString()));
     }
 
-
     @Test
-    void whenGetUserCalledValidEmail_itShouldReturnValidUSerDto() {
+    void whenGetUserCalledValidEmail_itShouldReturnValidUserDto() {
         UserEntity userEntity = UserEntity.builder()
                 .id(1L)
                 .userId("12q243sfdsdf")
